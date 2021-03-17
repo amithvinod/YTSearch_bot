@@ -45,8 +45,11 @@ def hi(update = Update, context = CallbackContext):
     kj = get_video(query)
 
     for (a,b,c,d,e,f) in zip(kj['ids'],kj['title'],kj['img'],kj['dur'],kj['vc'],kj['tim']):
-        
-            results.append(InlineQueryResultArticle(id = uuid4(),title=b,thumb_url = c,description=d+"  "+e+"  "+"  "+f,input_message_content=InputTextMessageContent("https://www.youtube.com/watch?v="+a)))
+            if d == None or e == None or f ==None:
+                kkk = ""
+            else:
+                kkk =" "+d+" | "+e+" | "+" | "+f
+            results.append(InlineQueryResultArticle(id = uuid4(),title=b,thumb_url = c,description=kkk,input_message_content=InputTextMessageContent("https://www.youtube.com/watch?v="+a)))
     print(results)
     update.inline_query.answer(results)
     
