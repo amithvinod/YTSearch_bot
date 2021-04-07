@@ -14,11 +14,12 @@ import os
 from telegram.ext.callbackcontext import CallbackContext
 from telegram.files.inputmedia import InputMediaDocument, InputMediaVideo
 from youtube_search import get_video
-
+import random
 from telegram.utils.helpers import escape_markdown
 import itertools
 import os
 PORT = int(os.environ.get('PORT', 5000))
+
 
 
 
@@ -78,9 +79,9 @@ def video(update, context):
             for i  in a:
                 lst.append(i)
 
-            
+            k = random.choice(lst)
 
-            update.message.reply_text("https://www.youtube.com/watch?v="+lst[0])
+            update.message.reply_text("https://www.youtube.com/watch?v="+k)
              
         except:
             update.message.reply_text("Couldnt find any results")
