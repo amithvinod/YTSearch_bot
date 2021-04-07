@@ -65,15 +65,25 @@ def video(update, context):
     
             
             bb = bbb.replace("search","")
-            b = bb.replace(":","")
+
+            if ":" in bb:
+                b = bb.replace(":","")
+                fgf = b.strip()
+            else:
+                fgf = bb.strip()
             
-            fgf = bbb.strip()
             x = get_video(fgf)
+            a = x['ids']
+            lst = []
+            for i  in a:
+                lst.append(i)
+
             
-            update.message.reply_text("https://www.youtube.com/watch?v="+x['ids'][0])
-        
+
+            update.message.reply_text("https://www.youtube.com/watch?v="+lst[0])
+             
         except:
-            update.message.reply_text("couldnt find any results")
+            update.message.reply_text("Couldnt find any results")
         
         
         
